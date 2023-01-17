@@ -3,6 +3,7 @@ package ru.synergy.androidstartproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -14,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView textView = (TextView) findViewById(R.id.t1);
+        textView.setText("Hard Edit");
+        textView.setTextColor(Color.BLUE);
 //        setContentView(R.layout.second_layout);
 //        TextView textView = (TextView) findViewById(R.id.header);
 //        textView.setText("Просто пример...");

@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
 
@@ -37,11 +38,21 @@
         android:id="@+id/text"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="32dp"
+        android:textSize="32sp"
         android:text="My Text"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:foreground="@color/material_dynamic_neutral40"/>
     <Button
         android:id="@+id/button"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:text="My Button"/>
+
 </LinearLayout>
 <!--/androidx.constraintlayout.widget.ConstraintLayout-->

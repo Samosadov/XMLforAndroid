@@ -10,26 +10,28 @@
         android:id="@+id/editTextNumberDecimal"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintRight_toLeftOf="@id/editTextNumberDecimal1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal1"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/editTextNumberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/editTextNumberDecimal" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/editTextNumberDecimal"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <RadioGroup
         android:id="@+id/radiogroup"

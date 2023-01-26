@@ -11,25 +11,60 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class Calculator extends AppCompatActivity {
 
-    private static final String logcatTag = "CALCULATOR_ACTIVITY";
+    private static final String LogcatTag = "CALCULATOR_ACTIVITY";
+    private static final String LifecycleTag = "LIFECYCLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LifecycleTag, "I'm onCreate() and I'm started.");
         setContentView(R.layout.activity_calculator);
 
         final Button calculate = (Button) findViewById(R.id.calc);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(logcatTag, "Button have been pushed.");
+                Log.d(LogcatTag, "Button have been pushed.");
                 calculateAnswer();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(LifecycleTag, "I'm onStart() and I'm started.");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LifecycleTag, "I'm onStop() and I'm started.");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LifecycleTag, "I'm onDestroy() and I'm started.");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LifecycleTag, "I'm onPause() and I'm started.");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LifecycleTag, "I'm onResume() and I'm started.");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 
     private void calculateAnswer() {
@@ -41,29 +76,31 @@ public class Calculator extends AppCompatActivity {
         RadioButton div = (RadioButton) findViewById(R.id.div);
         TextView result = (TextView) findViewById(R.id.result);
 
-        Log.d(logcatTag, "All views have been found");
+        Log.d(LogcatTag, "All views have been found");
 
-        float num1 = Float.parseFloat(numA.getText().toString());
-        float num2 = Float.parseFloat(numB.getText().toString());
+        float num1 = (numA.getText().toString().isEmpty() || numA.getText() == null)
+                ? 0 : Float.parseFloat(numA.getText().toString());
+        float num2 = (numB.getText().toString().isEmpty() || numB.getText() == null)
+                ? 0 : Float.parseFloat(numB.getText().toString());
 
-        Log.d(logcatTag,"All data have been read from input fields.");
-        Log.d(logcatTag, "a = " + numA + ", b = " + numB);
+        Log.d(LogcatTag,"All data have been read from input fields.");
+        Log.d(LogcatTag, "a = " + numA + ", b = " + numB);
 
         float res = 0;
         if(add.isChecked()) {
-            Log.d(logcatTag, "Operation: adding.");
+            Log.d(LogcatTag, "Operation: adding.");
             res = num1 + num2;
         }
         if(sub.isChecked()) {
-            Log.d(logcatTag, "Operation: subtracting");
+            Log.d(LogcatTag, "Operation: subtracting");
             res = num1 - num2;
         }
         if(mult.isChecked()) {
-            Log.d(logcatTag, "Operation: multiplication.");
+            Log.d(LogcatTag, "Operation: multiplication.");
             res = num1 * num2;
         }
         if(div.isChecked()) {
-            Log.d(logcatTag, "Operation: dividing.");
+            Log.d(LogcatTag, "Operation: dividing.");
             if(num2 == 0) {
                 Toast.makeText(this, "На ноль делить нельзя.", Toast.LENGTH_SHORT).show();
                 result.setText("ERROR");
@@ -71,7 +108,7 @@ public class Calculator extends AppCompatActivity {
             }
             res = num1 / num2;
         }
-        Log.d(logcatTag, "Result = " + res);
+        Log.d(LogcatTag, "Result = " + res);
         result.setText(String.valueOf(res));
     }
 }

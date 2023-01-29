@@ -2,6 +2,7 @@ package ru.synergy.androidstartproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,12 +35,15 @@ public class Calculator extends AppCompatActivity {
 //        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
 ///
 
+
         final Button calculate = (Button) findViewById(R.id.calc);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(LogcatTag, "Button have been pushed.");
                 calculateAnswer();
+                Intent i = new Intent(Calculator.this, MainActivity.class); //создать сообщение
+                startActivity(i); // отправить сообщение
             }
         });
     }

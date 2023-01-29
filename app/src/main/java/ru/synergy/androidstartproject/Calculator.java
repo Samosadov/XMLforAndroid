@@ -2,12 +2,15 @@ package ru.synergy.androidstartproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.RadioButton;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,15 @@ public class Calculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(LifecycleTag, "I'm onCreate() and I'm started.");
         setContentView(R.layout.activity_calculator);
+
+//  ======= Context training
+//        TextView textView = new TextView(this);
+//        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), );
+//// Доступ из Activity - наследник Context
+//        getSystemService(LAYOUT_INFLATER_SERVICE);
+////        shared prefs - доступ с использованием
+//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
+///
 
         final Button calculate = (Button) findViewById(R.id.calc);
         calculate.setOnClickListener(new View.OnClickListener() {

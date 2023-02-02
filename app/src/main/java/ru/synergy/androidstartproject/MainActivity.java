@@ -1,5 +1,10 @@
 package ru.synergy.androidstartproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.ActivityResultRegistry;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -16,12 +21,22 @@ import org.w3c.dom.Text;
 
 import java.text.BreakIterator;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int REQ_C = 1;
     EditText et;
     private TextView tv;
     private Button button1, button2, button3;
+    ActivityResultLauncher<Intent> mStartActivityForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent intent = result.getData();
+                    tv.setText(intent.getStringExtra("tv"));
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +50,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case RESULT_OK:
-//                tv.setText(data.getStringExtra("et"));
-//                break;
-//                case
-//        }
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RESULT_OK:
+                tv.setText(data.getStringExtra("et"));
+                break;
+
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -63,7 +78,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.button3:
                 i = new Intent(this, ComeBackActivity.class);
 
-                startActivityForResult(i, REQ_C);
+                mStartActivityForResult.launch(i);
                 break;
 
         }

@@ -48,12 +48,12 @@ public class Calculator extends AppCompatActivity {
                     calculateAnswer();
                 } catch (Exception e) {
 //               ===== Прерывание выполнения
-//                    e.printStackTrace();
-//                    Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
-//                    finish();
-//               ====== Восстановление
                     e.printStackTrace();
-                    dropFields();
+                    Toast.makeText(Calculator.this, e.getMessage()+ " of class " + e.getClass(), Toast.LENGTH_LONG).show();
+                    finish();
+//               ====== Восстановление
+//                    e.printStackTrace();
+//                    dropFields();
                 }
 
                 Intent i = new Intent(Calculator.this, MainActivity.class); //создать сообщение
